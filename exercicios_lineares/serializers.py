@@ -1,8 +1,7 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework import serializers
+
+
 from random import randint
-
-
 class Exercicios:
 
     operador = '+'
@@ -16,10 +15,9 @@ class Exercicios:
             exercicios[x] = f'{x}) {fator1} + {fator2} = '
         return exercicios
 
-class ExercicioAPIView(APIView):
-    """
-    API Exercicios Matematicos
-    """
 
-    def get(self, request):
-        return Response(Exercicios().gerador())
+class ExerciciosSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Exercicios
+        fields = Exercicios().gerador()
