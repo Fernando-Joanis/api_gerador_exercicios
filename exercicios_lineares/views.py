@@ -6,21 +6,43 @@ from exercicios_lineares.exercicios_lineares import LinearExercises
 from utils.gerador_numeros import gerando_numeros
 
 
-class ExercicioAPIView(APIView):
+class LinearAPIView(APIView):
     """
     API Exercicios Matematicos
+
+    operador = (soma/multi/sub/div)
+    ordem = (n/s)
+    intervalo1 = (-9999/9999)
+    intervalo2 = (-9999/9999)
+
+    {
+    "operador":"soma",
+    "ordem":"n",
+    "intervalo1":10,
+    "intervalo2":100
+    }
     """
+
+    def get(self, request):
+        return Response('API COM METODOS POST APENAS')
 
     def post(self, request):
         data = request.data
-        operador, ordem, intervalo1, intervalo2 = validation(data)
+        operador = operadores(data['operador'])
+        ordem = data['ordem']
+        intervalo1 = int(data['intervalo1'])
+        intervalo2 = int(data['intervalo2'])
 
+        if int(intervalo2) < int(intervalo1):
+            intervalo1 = int(data['intervalo2'])
+            intervalo2 = int(data['intervalo1'])
+        print(operador, ordem, intervalo1, intervalo2)
         file_path = LinearExercises(operador=operador,
                                     gerador=gerando_numeros,
                                     ordem=ordem,
                                     intervalo1=intervalo1,
                                     intervalo2=intervalo2).questions()
-        return FileResponse(open(file_path), 'rb')
+        return FileResponse(file_path)
 
 
 def operadores(operador):
@@ -35,26 +57,3 @@ def operadores(operador):
     else:
         return None
 
-
-def validation(data):
-    operador = operadores(data['operador'])
-    if operador == None:
-        return Response('Operador invalido - (soma/multi/sub/div)', status=status.HTTP_400_BAD_REQUEST)
-
-    ordem = data['ordem']
-    if ordem != 'n' or ordem != 's':
-        return Response('Ordem invalido - (n/s)', status=status.HTTP_400_BAD_REQUEST)
-
-    intervalo1 = data['intervalo1']
-    if int(intervalo1) < -9999 or int(intervalo1) > 9999:
-        return Response('Intervalo invalido - (-9999/9999)', status=status.HTTP_400_BAD_REQUEST)
-
-    intervalo2 = data['intervalo2']
-    if int(intervalo2) < -9999 or int(intervalo2) > 9999:
-        return Response('Intervalo invalido - (-9999/9999)', status=status.HTTP_400_BAD_REQUEST)
-
-    if int(intervalo2) > int(intervalo1):
-        intervalo1 = data['intervalo2']
-        intervalo2 = data['intervalo1']
-
-    return operador, ordem, intervalo1, intervalo2

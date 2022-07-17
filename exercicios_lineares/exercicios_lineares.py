@@ -77,7 +77,7 @@ class LinearExercises:
                 self.x += 1
         date = datetime.now()
         date_format = date.strftime("%m_%d_%Y_%H_%M_%S")
-        self.pdf.output(f'../files_pdf/exercicios_{date_format}.pdf')
+        self.pdf.output(f'files_pdf/exercicios_{date_format}.pdf')
         file_path = f'files_pdf/exercicios_{date_format}.pdf'
         return file_path
 

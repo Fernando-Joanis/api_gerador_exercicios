@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ExercicioAPIView
+from .views import LinearAPIView
 
 urlpatterns = [
-    path('lineares/', ExercicioAPIView, name='lineares')
+    path('linear/', LinearAPIView.as_view())
 ]

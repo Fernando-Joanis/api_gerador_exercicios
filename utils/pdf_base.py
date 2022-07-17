@@ -5,7 +5,7 @@ class PDF(FPDF):
     def __init__(self, titulo):
         super().__init__()
         self.titulo = titulo
-        self.imagem = '../static_file/65709.png'
+        self.imagem = 'staticfiles/65709.png'
 
     def header(self):
         self.image(self.imagem, 10, 10, 12)
