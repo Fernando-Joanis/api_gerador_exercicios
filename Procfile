@@ -1,0 +1,1 @@
+web: gunicorn gerador_exercicios.wsgi
