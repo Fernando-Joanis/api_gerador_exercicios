@@ -3,11 +3,6 @@ from utils.gerador_numeros import gerando_numeros
 from datetime import datetime
 
 titulo = 'GCM - Gerador de Calcúlos Matematicos'
-pdf = PDF(titulo=titulo)
-pdf.alias_nb_pages()
-pdf.add_page()
-pdf.set_text_color(0, 0, 0)
-pdf.set_font('courier', '', 14)
 LINE_LENGTH = 8
 COLUMN_LENGTH = 100
 MAX_LINE_LENGTH = 260
@@ -15,6 +10,11 @@ MAX_LINE_LENGTH = 260
 
 class LinearExercises:
     def __init__(self, operador, gerador, intervalo1, intervalo2, ordem='n'):
+        pdf = PDF(titulo=titulo)
+        pdf.alias_nb_pages()
+        pdf.add_page()
+        pdf.set_text_color(0, 0, 0)
+        pdf.set_font('courier', '', 14)
         self.operador = operador
         self.gerador = gerador
         self.pdf = pdf

@@ -36,13 +36,13 @@ class LinearAPIView(APIView):
         if int(intervalo2) < int(intervalo1):
             intervalo1 = int(data['intervalo2'])
             intervalo2 = int(data['intervalo1'])
-        print(operador, ordem, intervalo1, intervalo2)
+
         file_path = LinearExercises(operador=operador,
                                     gerador=gerando_numeros,
                                     ordem=ordem,
                                     intervalo1=intervalo1,
                                     intervalo2=intervalo2).questions()
-        return FileResponse(file_path)
+        return FileResponse(open(file_path, 'rb'))
 
 
 def operadores(operador):
