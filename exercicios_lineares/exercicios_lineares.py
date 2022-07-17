@@ -14,7 +14,7 @@ MAX_LINE_LENGTH = 260
 
 
 class LinearExercises:
-    def __init__(self, operador, gerador, ordem, intervalo1, intervalo2):
+    def __init__(self, operador, gerador, intervalo1, intervalo2, ordem='n'):
         self.operador = operador
         self.gerador = gerador
         self.pdf = pdf
