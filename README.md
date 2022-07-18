@@ -10,13 +10,15 @@ Outro que já retornará um arquivo PDF formatado com as operações seguindo os
 
 Rotas (em desenvolvimento)
 
-Conceito: url = api1.com/?operador=+&inicio=1&fim=10&formato=linear&ordem=True
-
-Conceito: url api1.com/?operador=+
+Conceito: url url.com/api/v1/linear/
 
 Demais informações passadas no post body.
 
-post_body = {"inico": 1, "fim": 10, "formato": "linear", "ordem"=True}
+post_body = {"operador":"div", "ordem"="n", "intervalo1"=1, "intervalo2"=10}
+operadores disponiveis = soma, sub, multi, div
+ordem = n, s
+intervalo1 = -9999/9999
+intervalo2 = -9999/9999
 
 Em casos como divisão, você terá a opção de com ou sem resto. Portanto, o maior número sempre será o dividendo.
 
