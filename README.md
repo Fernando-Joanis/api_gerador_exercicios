@@ -15,10 +15,15 @@ Conceito: url url.com/api/v1/linear/
 Demais informações passadas no post body.
 
 post_body = {"operador":"div", "ordem"="n", "intervalo1"=1, "intervalo2"=10}
+
 operadores disponiveis = soma, sub, multi, div
+
 ordem = n, s
+
 intervalo1 = -9999/9999
+
 intervalo2 = -9999/9999
+
 
 Em casos como divisão, você terá a opção de com ou sem resto. Portanto, o maior número sempre será o dividendo.
 
